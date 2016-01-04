@@ -12,5 +12,8 @@
   "bugs": {
     "url": "https://github.com/sledjs/slides/issues"
   },
-  "homepage": "https://github.com/sledjs/slides#readme"
+  "homepage": "https://github.com/sledjs/slides#readme",
+  "dependencies": {
+    "@sled/set-transform": "0.0.1"
+  }
 }

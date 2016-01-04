@@ -1,4 +1,4 @@
-import setTransform from './setTransform';
+import setTransform from '@sled/set-transform';
 
 export default class Slides {
   constructor($core) {
