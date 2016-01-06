@@ -1,6 +1,6 @@
 {
   "name": "@sled/slides",
-  "version": "0.1.1-beta",
+  "version": "0.1.2-beta",
   "description": "Seems to be important part",
   "main": "index.js",
   "repository": {
@@ -14,6 +14,6 @@
   },
   "homepage": "https://github.com/sledjs/slides#readme",
   "dependencies": {
-    "@sled/set-transform": "0.0.1"
+    "@sled/set-transform": "^0.0.1"
   }
 }

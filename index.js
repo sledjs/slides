@@ -1,3 +1,5 @@
+'use strict';
+
 let setTransform = require('@sled/set-transform');
 
 module.exports = class Slides {
