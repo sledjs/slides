@@ -1,6 +1,6 @@
-import setTransform from '@sled/set-transform';
+let setTransform = require('@sled/set-transform');
 
-export default class Slides {
+module.exports = class Slides {
   constructor($core) {
     this.$slides = $core.domModules.slides;
     this.slide = 0;
@@ -69,4 +69,4 @@ export default class Slides {
       return this.afterChange(false, val);
     }
   }
-}
+};
