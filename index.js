@@ -7,14 +7,13 @@ module.exports = class Slides extends eventEmitter {
   constructor($core) {
     super();
     this.$slides = $core.domModules.slides;
+    this.changeAccess = true;
     this.slide = 0;
-    this.changeAcces = true;
   }
 
-  sort(next) {
+  sort(except) {
     [].forEach.call(this.$slides.children, (slide, i) => {
-
-      if (i == next) return false;
+      if (i == except) return false;
 
       if (i > this.slide) {
         slide.style.transition = '0s';
@@ -33,41 +32,39 @@ module.exports = class Slides extends eventEmitter {
   }
 
   change(val) {
+    if (!this.changeAccess) return false;
 
-    if (!this.changeAcces) return false;
-    this.changeAcces = false;
+    this.changeAccess = false;
 
-    let prev = this.slide;
-    let $prev = this.$slides.children[prev];
-    let next = this.slide + val;
-    let $next = this.$slides.children[next];
     let forward =  val > 0;
 
-    if (next >= 0 && $next) {
-      this.slide += val;
-      if ($prev) {
-        $prev.style.position = 'absolute';
-        setTransform($prev.style, `translateX(${ forward ? -100 : 100}%)`);
+    let prev = this.slide;
+    let next = prev + val;
 
-        if ($prev.previousElementSibling) {
-          $prev.previousElementSibling.style.position = 'absolute';
-          setTransform($prev.previousElementSibling.style, 'translateX(-100%)');
-        }
-      }
+    let $prev = this.$slides.children[prev];
+    let $next = this.$slides.children[next];
+
+    if ($next) {
+      this.slide += val;
 
       $next.style.position = 'relative';
       setTransform($next.style, 'translateX(0)');
 
-      this.emit('change', this.slide);
-
-      setTimeout(_=> this.changeAcces = true, 750);
+      if ($prev) {
+        $prev.style.position = 'absolute';
+        setTransform($prev.style, `translateX(${ forward ? -100 : 100}%)`);
+      }
 
       this.sort(prev);
-
+      this.emit('change', this.slide);
       this.emit('afterChange', true, val);
+
+      setTimeout(_=>
+        this.changeAccess = true, 750);
+
       return true;
     } else {
-      this.changeAcces = true;
+      this.changeAccess = true;
       this.emit('afterChange', false, val);
       return false;
     }
