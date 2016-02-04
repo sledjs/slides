@@ -14,6 +14,7 @@
   },
   "homepage": "https://github.com/sledjs/slides#readme",
   "dependencies": {
-    "@sled/set-transform": "^0.0.2"
+    "@sled/set-transform": "^0.0.2",
+    "eventemitter3": "^1.1.1"
   }
 }

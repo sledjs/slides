@@ -1,15 +1,15 @@
 'use strict';
 
 let setTransform = require('@sled/set-transform');
+let eventEmitter = require('eventemitter3');
 
-module.exports = class Slides {
+module.exports = class Slides extends eventEmitter {
   constructor($core) {
+    super();
     this.$slides = $core.domModules.slides;
     this.slide = 0;
     this.changeAcces = true;
     this.afterChange = can => can;
-
-    this.broadcast = [];
   }
 
   sort(next) {
@@ -59,7 +59,7 @@ module.exports = class Slides {
       $next.style.position = 'relative';
       setTransform($next.style, 'translateX(0)');
 
-      this.broadcast.forEach(_=>_(this.slide));
+      this.emit('change', this.slide);
 
       setTimeout(_=> this.changeAcces = true, 750);
 
