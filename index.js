@@ -9,7 +9,6 @@ module.exports = class Slides extends eventEmitter {
     this.$slides = $core.domModules.slides;
     this.slide = 0;
     this.changeAcces = true;
-    this.afterChange = can => can;
   }
 
   sort(next) {
@@ -65,10 +64,12 @@ module.exports = class Slides extends eventEmitter {
 
       this.sort(prev);
 
-      return this.afterChange(true, val);
-    }else {
+      this.emit('afterChange', true, val);
+      return true;
+    } else {
       this.changeAcces = true;
-      return this.afterChange(false, val);
+      this.emit('afterChange', false, val);
+      return false;
     }
   }
 };
