@@ -6,13 +6,13 @@ let eventEmitter = require('eventemitter3');
 module.exports = class Slides extends eventEmitter {
   constructor($core) {
     super();
-    this.$slides = $core.domModules.slides;
-    this.changeAccess = true;
+    this.name = 'slides';
     this.slide = 0;
+    this.changeAccess = true;
   }
 
   sort(except) {
-    [].forEach.call(this.$slides.children, (slide, i) => {
+    [].forEach.call(this.$.children, (slide, i) => {
       if (i == except) return false;
 
       if (i > this.slide) {
@@ -41,8 +41,8 @@ module.exports = class Slides extends eventEmitter {
     let prev = this.slide;
     let next = prev + val;
 
-    let $prev = this.$slides.children[prev];
-    let $next = this.$slides.children[next];
+    let $prev = this.$.children[prev];
+    let $next = this.$.children[next];
 
     if ($next) {
       this.slide += val;
