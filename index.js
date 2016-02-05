@@ -9,6 +9,9 @@ module.exports = class Slides extends eventEmitter {
     this.name = 'slides';
     this.slide = 0;
     this.changeAccess = true;
+
+    ['next', 'prev', 'changeTo']
+      .forEach(toBind => this[toBind] = this[toBind].bind(this));
   }
 
   sort(except) {
