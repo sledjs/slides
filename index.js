@@ -9,6 +9,7 @@ module.exports = class Slides extends eventEmitter {
   constructor($core) {
     super();
     this.name = 'slides';
+    this.peer = '$';
     this.slide = 0;
     this.changeAccess = true;
 
