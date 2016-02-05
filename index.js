@@ -31,6 +31,14 @@ module.exports = class Slides extends eventEmitter {
     this.change(which - this.slide);
   }
 
+  next() {
+    this.change(1);
+  }
+
+  prev() {
+    this.change(-1);
+  }
+
   change(val) {
     if (!this.changeAccess) return false;
 
