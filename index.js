@@ -3,6 +3,8 @@
 let setTransform = require('@sled/set-transform');
 let eventEmitter = require('eventemitter3');
 
+require('./index.styl');
+
 module.exports = class Slides extends eventEmitter {
   constructor($core) {
     super();
