@@ -1,9 +1,9 @@
 'use strict';
 
-let setTransform = require('@sled/set-transform');
-let eventEmitter = require('eventemitter3');
+import setTransform from '@sled/set-transform';
+import eventEmitter from 'eventemitter3';
 
-module.exports = class Slides extends eventEmitter {
+class Slides extends eventEmitter {
   constructor($core) {
     super();
     this.slide = 0;
@@ -80,3 +80,5 @@ module.exports = class Slides extends eventEmitter {
     }
   }
 };
+
+export default Slides;

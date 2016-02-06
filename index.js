@@ -1,8 +1,9 @@
 'use strict';
-let Slides = require('./src/Slides');
-require('./index.styl');
 
-module.exports = {
+import './index.styl';
+import Slides from './src/Slides';
+
+export default {
   class: Slides,
   name: 'slides',
   peer: '$',
