@@ -16,5 +16,8 @@
   "dependencies": {
     "@sled/set-transform": "^0.0.2",
     "eventemitter3": "^1.1.1"
+  },
+  "peerDependencies": {
+    "@sled/core": "^1.3"
   }
 }
