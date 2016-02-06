@@ -4,8 +4,7 @@ import setTransform from '@sled/set-transform';
 import eventEmitter from 'eventemitter3';
 
 class Slides extends eventEmitter {
-  constructor($core) {
-    super();
+  init($core) {
     this.slide = 0;
     this.changeAccess = true;
 
