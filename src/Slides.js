@@ -8,7 +8,7 @@ class Slides extends eventEmitter {
     this.slide = 0;
     this.changeAccess = true;
 
-    ['next', 'prev', 'changeTo']
+    ['first', 'next', 'prev', 'last', 'changeTo']
       .forEach(toBind => this[toBind] = this[toBind].bind(this));
   }
 
@@ -32,12 +32,20 @@ class Slides extends eventEmitter {
     this.move(which - this.slide);
   }
 
+  first() {
+    this.changeTo(0);
+  }
+
   next() {
     this.move(1);
   }
 
   prev() {
     this.move(-1);
+  }
+
+  last() {
+    this.changeTo(this.$$.length - 1);
   }
 
   move(val) {
