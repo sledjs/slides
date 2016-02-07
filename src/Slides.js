@@ -3,7 +3,12 @@
 import setTransform from '@sled/set-transform';
 import eventEmitter from 'eventemitter3';
 
+/** Slides module */
 class Slides extends eventEmitter {
+  /**
+   * Provide slides api
+   * @param {any} core slider module
+   */
   init($core) {
     this.slide = 0;
     this.changeAccess = true;
@@ -12,6 +17,10 @@ class Slides extends eventEmitter {
       .forEach(toBind => this[toBind] = this[toBind].bind(this));
   }
 
+  /**
+   * Sort slides to correct sides
+   * @param {number} slide which won't be sorted
+   */
   sort(except) {
     [].forEach.call(this.$.children, (slide, i) => {
       if (i == except) return false;
@@ -28,26 +37,49 @@ class Slides extends eventEmitter {
     });
   }
 
+  /**
+   * Change to specific slide
+   * @param {number} to which slide
+   */
   changeTo(which) {
     this.move(which - this.slide);
   }
 
+  /**
+   * Move to first slide.
+   */
   first() {
     this.changeTo(0);
   }
 
+  /**
+   * Move to next slide.
+   * @return {boolean} Is there a yet another next slide.
+   */
   next() {
     return this.move(1) + 1 < this.$$.length;
   }
 
+  /**
+   * Move to previous slide.
+   * @return {boolean} Is there a yet another previous slide.
+   */
   prev() {
     return this.move(-1) - 1 >= 0;
   }
 
+  /**
+   * Move to last slide.
+   */
   last() {
     this.changeTo(this.$$.length - 1);
   }
 
+  /**
+   * Change current slide.
+   * @param {number} move by provided value
+   * @return {number} actual slide.
+   */
   move(val) {
     if (!this.changeAccess) return false;
 
