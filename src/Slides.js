@@ -37,11 +37,11 @@ class Slides extends eventEmitter {
   }
 
   next() {
-    this.move(1);
+    return this.move(1) + 1 < this.$$.length;
   }
 
   prev() {
-    this.move(-1);
+    return this.move(-1) - 1 >= 0;
   }
 
   last() {
@@ -79,12 +79,12 @@ class Slides extends eventEmitter {
       setTimeout(_=>
         this.changeAccess = true, 750);
 
-      return true;
     } else {
       this.changeAccess = true;
       this.emit('afterChange', false, val);
-      return false;
     }
+
+    return next;
   }
 };
 
