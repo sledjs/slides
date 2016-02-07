@@ -29,18 +29,18 @@ class Slides extends eventEmitter {
   }
 
   changeTo(which) {
-    this.change(which - this.slide);
+    this.move(which - this.slide);
   }
 
   next() {
-    this.change(1);
+    this.move(1);
   }
 
   prev() {
-    this.change(-1);
+    this.move(-1);
   }
 
-  change(val) {
+  move(val) {
     if (!this.changeAccess) return false;
 
     this.changeAccess = false;
