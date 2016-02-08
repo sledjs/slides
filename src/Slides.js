@@ -109,7 +109,7 @@ class Slides extends eventEmitter {
       this.emit('afterChange', true, val);
 
       setTimeout(_=>
-        this.changeAccess = true, 750);
+        this.changeAccess = true, 500);
 
     } else {
       this.changeAccess = true;
