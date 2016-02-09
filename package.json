@@ -15,7 +15,8 @@
   "homepage": "https://github.com/sledjs/slides#readme",
   "dependencies": {
     "@sled/set-transform": "^0.0.2",
-    "eventemitter3": "^1.1.1"
+    "eventemitter3": "^1.1.1",
+    "flexstyl": "0.0.4"
   },
   "peerDependencies": {
     "@sled/core": "^1.3"
