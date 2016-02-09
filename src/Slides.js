@@ -9,9 +9,12 @@ class Slides extends eventEmitter {
    * Provide slides api
    * @param {any} core slider module
    */
-  init($core) {
+  init(core) {
     this.slide = 0;
     this.changeAccess = true;
+
+    core.$.addEventListener('dragstart', e => e.preventDefault());
+    core.$.addEventListener('drop', e => e.preventDefault());
 
     ['first', 'next', 'prev', 'last', 'changeTo']
       .forEach(toBind => this[toBind] = this[toBind].bind(this));
