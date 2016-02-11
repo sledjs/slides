@@ -1,8 +1,6 @@
-@import '~flexstyl/index'
+@import '~flexstyl/flex'
 
 .sled
-  position relative
-
   .slides
     cursor pointer
     overflow hidden
@@ -25,13 +23,14 @@
           box-shadow 0 .1em .1em rgba(#000, .5)
 
     .slide
+      flex line
+      flex center
       position absolute
       height 100%
       max-height inherit
       top 0; left 0
       width 100%
       z-index -2
-      @extend .flex-line, .center
       transform translateX(100%)
       transition .8s ease
 
