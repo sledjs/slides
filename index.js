@@ -1,6 +1,7 @@
 'use strict';
 
-import './index.styl';
+import './src/slides.styl';
+import './src/simple.styl';
 import Slides from './src/Slides';
 
 export default {
